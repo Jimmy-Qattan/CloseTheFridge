@@ -20,19 +20,19 @@ void loop() {
   lcd.setCursor(0, 1);
   Serial.print(dist);
   
-  isTheFatRetardStillLookingForHisPieInTheFridgeyWidgey1();
+  fridgeCheck1();
 }
 
-void isTheFatRetardStillLookingForHisPieInTheFridgeyWidgey1() {
+void fridgeCheck1() {
   for (int g = 0; g < 10000; g++) {
     if ((dist < 70)) {
-      isTheFatRetardStillLookingForHisPieInTheFridgeyWidgey2();
+      fridgeCheck2();
       delay(1000);
     }
   }
 }
 
-void isTheFatRetardStillLookingForHisPieInTheFridgeyWidgey2() {
+void fridgeCheck2() {
   for (int i = 0; i < 1000; i++) {
     lcd.clear();
     phase = 1;
@@ -42,13 +42,13 @@ void isTheFatRetardStillLookingForHisPieInTheFridgeyWidgey2() {
     }
     delay(2000);
     if (dist > 200) {
-      isTheFatRetardStillLookingForHisPieInTheFridgeyWidgey3();
+      fridgeCheck3();
     }
     delay(500);
   }
 }
 
-void isTheFatRetardStillLookingForHisPieInTheFridgeyWidgey3() {
+void fridgeCheck3() {
   for (int j = 0; j < 1000; j++) {
     lcd.clear();
     phase = 2;
@@ -72,19 +72,19 @@ void isTheFatRetardStillLookingForHisPieInTheFridgeyWidgey3() {
       lcd.print("CLOSE FRIDGE!!!!!!");
     }
     digitalWrite(buzzer, HIGH);
-    isTheFatRetardStillLookingForHisPieInTheFridgeyWidgey4(); 
+    fridgeCheck4(); 
     delay(500);
   }
 }
 
-void isTheFatRetardStillLookingForHisPieInTheFridgeyWidgey4() {
+void fridgeCheck4() {
   for (int k = 0; k < 1000; k++) {
     dist = sr04.Distance();
     if (dist < 50) {
       digitalWrite(buzzer, LOW);
       lcd.clear();
       delay(1000);
-      isTheFatRetardStillLookingForHisPieInTheFridgeyWidgey1();
+      fridgeCheck1();
     }
     delay(500);
   }
